@@ -1,0 +1,49 @@
+﻿@using TestCources.Models
+@model System.Collections.Generic.List<TestCources.Models.Cources>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+<div class="row">
+    <h1>КУРСЫ</h1>
+    <h2>@Html.ActionLink("Добавить новый курс", "Create")</h2>
+</div>
+<div class="col-md-6">
+    @foreach (Cources cource in Model)
+    {
+        <div class="row cource" id="@cource.Id" onmouseover="LightUpCells('@cource.DayOfWeek.Id','@cource.StartTime','@cource.FinishTime');" onmouseout="ClearTable();">
+            @cource.CourseTitle @cource.DayOfWeek.DayOfWeekTitle @cource.StartTime:00 - @cource.FinishTime:00
+            <a href="/Cources/Edit/@cource.Id"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="/Cources/Delete/@cource.Id"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+    }
+</div>
+<div class="col-md-6">
+    <table class="table table-bordered">
+        <tr>
+            <th>&nbsp;</th>
+            @foreach (SelectListItem item in ViewBag.DayOfWeekId)
+            {
+                <th>@item.Text</th>
+            }
+        </tr>
+        @for (int i = 9; i < 18; i++)
+        {
+            <tr>
+                <th>@i:00</th>
+
+
+                @foreach (SelectListItem item in ViewBag.DayOfWeekId)
+                {
+                    string classTitle = i + "_" + item.Value;
+                <td class="@classTitle"></td>
+                }
+            </tr>
+        }
+    </table>
+</div>

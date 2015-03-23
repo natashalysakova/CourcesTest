@@ -1,0 +1,53 @@
+﻿@model TestCources.Models.Cources
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="form-group">
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.CourseTitle)
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.CourseTitle)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.DayOfWeekId)
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.DayOfWeekId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.StartTime)
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.FinishTime)
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.FinishTime)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.Price)
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Price)
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Удалить курс" class="btn btn-default" /> |
+        @Html.ActionLink("Вернуться обратно", "Index")
+    </p>
+}
